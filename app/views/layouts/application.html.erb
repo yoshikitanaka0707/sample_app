@@ -1,6 +1,8 @@
+<!--app/views/static_pagesの共通部分を書くことができる。-->
 <!DOCTYPE html>
 <html>
   <head>
+    <!--application_helper.rbのモジュールを引数にtitleを渡して呼び出す。-->
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all',
@@ -8,11 +10,12 @@
     <%= javascript_include_tag 'application',
                                'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/shim' %>
+    <!--それぞれスタイルシート、JavaScript、csrf_meta_tagsメソッドをページ内で展開するためのものです。-->
   </head>
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
-      <%= yield %>
+      <%= yield %> <!--app/views/static_pagesの共通部分がここに入る。-->
       <%= render 'layouts/footer' %>
     </div>
   </body>
