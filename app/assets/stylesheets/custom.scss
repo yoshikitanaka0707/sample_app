@@ -7,6 +7,13 @@ $gray-medium-light: #eaeaea;
 
 /* universal */
 
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+/*SassのCSSルールのグループをパッケージ化して複数の要素に適用するミックイン機能を使っている*/
+
 body {
   padding-top: 60px;
 }
@@ -95,4 +102,15 @@ footer {
       margin-left: 15px;
     }
   }
+}
+
+/* miscellaneous */
+/*ミックスインの対象*/
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing; /*Sassのミックスイン先*/
 }

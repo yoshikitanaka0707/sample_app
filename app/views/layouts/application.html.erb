@@ -11,12 +11,16 @@
                                'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/shim' %>
     <!--それぞれスタイルシート、JavaScript、csrf_meta_tagsメソッドをページ内で展開するためのものです。-->
+
+
   </head>
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
       <%= yield %> <!--app/views/static_pagesの共通部分がここに入る。-->
       <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>
+      <!--  サイトのレイアウトにデバッグ情報を追加しているが、本番展開した場合には表示しない。 -- >
     </div>
   </body>
 </html>
