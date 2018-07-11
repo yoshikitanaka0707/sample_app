@@ -17,6 +17,11 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
+      <% flash.each do |message_type, message| %>
+      <!--キーと値を引数にとる。-->
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <!--キーをcssのクラス名に利用し、メッセージを表示する。-->
+      <% end %>  
       <%= yield %> <!--app/views/static_pagesの共通部分がここに入る。-->
       <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
