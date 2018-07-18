@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)  #strong parametersを使う。
     if @user.save #saveメソッドを使うまでバリデーションは働かない。
       # 保存の成功をここで扱う。
+      log_in @user   ###ユーザー登録と同時にログインさせる。
       flash[:success] = "Welcome to the Sample App!"   ###一度だけフラッシュメッセージを表示する。
       redirect_to @user   #redirect_to user_url(@user)
     else

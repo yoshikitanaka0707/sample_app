@@ -1,23 +1,43 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "sample app", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",    root_path %></li>
-        <li><%= link_to "Help",    help_path %></li>
-        <li><%= link_to "Log in", '#' %></li>
-      </ul>
-    </nav>
-    <!--
-    Railsが埋め込みRubyを評価し、レイアウトを描画すると、
-    上のリストは次のように置き換わります
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Help</a></li>
-        <li><a href="#">Log in</a></li>
-      </ul>
-    </nav>
-  -->
-  </div>
+ <div class="container">
+   <%= link_to "sample app", root_path, id: "logo" %>
+   <nav>
+     <ul class="nav navbar-nav navbar-right">
+       <li><%= link_to "Home", root_path %></li>
+       <li><%= link_to "Help", help_path %></li>
+       <!--
+       Railsが埋め込みRubyを評価し、レイアウトを描画すると、
+       上のリストは次のように置き換わります
+           <li><a href="#">Home</a></li>
+           <li><a href="#">Help</a></li>
+         -->
+       <!-- もしログインしていれば -->
+       <% if logged_in? %>
+         <li><%= link_to "Users", '#' %></li>
+         <!-- ユーザー一覧ページに飛べるようにする。 -->
+         <li class="dropdown">
+        <!-- bootstrapで使うクラスを定義。 -->
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+             Account <b class="caret"></b>
+           </a>
+           <ul class="dropdown-menu">
+             <!-- bootstrapで使うクラスを定義。 -->
+             <li><%= link_to "Profile", current_user %></li>
+             <!-- プロフィールページへのリンク -->
+             <li><%= link_to "Settings", '#' %></li>
+             <!-- 設定ページへのリンク（ログインしないと意味ないから） -->
+             <li class="divider"></li>
+             <li>
+               <%= link_to "Log out", logout_path, method: :delete %>
+               <!-- ログアウト -->
+             </li>
+           </ul>
+         </li>
+       <% else %>
+         <li><%= link_to "Log in", login_path %></li>
+         <!-- ユーザーがログインしていいなければログインへの導線を作る。 -->
+       <% end %>
+     </ul>
+   </nav>
+ </div>
 </header>

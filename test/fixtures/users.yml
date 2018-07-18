@@ -1,1 +1,5 @@
-#データーベースに書いたバリデーションに引っかかるため最初からにしておく。
+#データーベースに書いたバリデーションに引っかかるため最初は空にしておく。
+ michael:
+  name: Michael Example
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>   ###erbでsecureなパスワード呼び出す。引数をpasswordとしてしまい、いつでも生のパスワードを見れるようにしておく。・

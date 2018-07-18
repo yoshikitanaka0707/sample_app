@@ -8,4 +8,9 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false } #大文字小文字の差を無視する
   has_secure_password #安全なパスワードを持っているぞ。
   validates :password, presence: true, length: { minimum: 6 } #パスワードがちゃんと存在して、長さの最小が6
+  def User.digest(string)   ###今後テストなどでログインのパスワードを仮に発行したいときに用いる。
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 end

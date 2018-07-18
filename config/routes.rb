@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get  '/about',   to: 'static_pages#about'
   get  '/contact', to: 'static_pages#contact'
   get  '/signup',  to: 'users#new'
+  post '/signup',  to: 'users#create'   ###postリクエストが/signup URLに送られたときに、users#createアクションに飛ばす。
   get    '/login',   to: 'sessions#new'   ###ログインフォーム送信
   post   '/login',   to: 'sessions#create'   ###ログイン
   delete '/logout',  to: 'sessions#destroy'   ###ログアウト
