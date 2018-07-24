@@ -13,7 +13,7 @@
          -->
        <!-- もしログインしていれば -->
        <% if logged_in? %>
-         <li><%= link_to "Users", '#' %></li>
+         <li><%= link_to "Users", users_path %></li>
          <!-- ユーザー一覧ページに飛べるようにする。 -->
          <li class="dropdown">
         <!-- bootstrapで使うクラスを定義。 -->
@@ -24,8 +24,8 @@
              <!-- bootstrapで使うクラスを定義。 -->
              <li><%= link_to "Profile", current_user %></li>
              <!-- プロフィールページへのリンク -->
-             <li><%= link_to "Settings", '#' %></li>
-             <!-- 設定ページへのリンク（ログインしないと意味ないから） -->
+             <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+             <!-- 設定ページへのリンク（ログインしないと意味ないもの） -->
              <li class="divider"></li>
              <li>
                <%= link_to "Log out", logout_path, method: :delete %>
