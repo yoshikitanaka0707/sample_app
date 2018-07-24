@@ -1,6 +1,8 @@
 #StaticPagesコントローラを生成すると、(config/routes.rb)ファイルが自動的に更新される。
 #このルーティングファイルはルーターの実装を受け持ち、URLとWebページの対応関係を定義する。
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
   root 'static_pages#home' #ルート「/」へのGETリクエストがStaticPagesコントローラのhomeアクションにルーティングされます。
   get 'users/new' #users/newというURLに対してgetリクエストが来たら、StaticPagesコントローラのnewアクションに渡すよう
   get  '/help',    to: 'static_pages#help'
@@ -13,4 +15,5 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'   ###ログアウト
   resources :users
   resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
 end
