@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails',        '5.2.0'
 gem 'bcrypt', '3.1.12'
 gem 'faker',          '1.9.1'
+gem 'carrierwave',             '1.2.3'
+gem 'mini_magick',             '4.8.0'
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'bootstrap-sass', '3.3.7'
@@ -18,6 +20,10 @@ gem 'rails-controller-testing', '1.0.2'
 group :development, :test do
   gem 'sqlite3',      '1.3.13'
   gem 'byebug', '9.0.6', platform: :mri
+end
+
+group :production do
+  gem 'fog', '1.42'
 end
 
 group :development do
